@@ -1,0 +1,27 @@
+<!-- Divya -->
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<script>
+    $(document).ready(function(){
+        $("#search").click(function(){
+            var empid=$("#empid").val();
+            $.post("searchemployee.php",{empid:empid},function(r,s)
+            {
+                var s=JSON.parse(r);
+                document.getElementById('name').innerHTML="<span>Name: </span>"+s.name;
+                document.getElementById('designation').innerHTML="<span>designation: </span>"+s.designation;
+                document.getElementById('salary').innerHTML="<span>Name Salary: </span>"+s.salary;
+            });
+        });
+    });
+</script>
+<div class="card" style="height:auto;">
+<input type="text" id="empid" placeholder="Enter employee Id" class="form-control w-75" style="margin:auto">
+<input type="button" value="Search" id="search" class="btn btn-primary w-25" style="margin:auto;margin-top:20px"><br>
+<div class="card" style="padding:auto">
+<span id="name"></span><br>
+<span id="designation"></span><br>
+<span id="salary"></span><br>
+</div>
+</div>
+<!-- Divya -->

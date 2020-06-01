@@ -1,0 +1,43 @@
+<!-- Divya -->
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<script>
+   $(document).ready(function(){
+       $("#save").click(function(){
+           var data={"empid":$("#empid").val(),"name":$("#name").val(),"designation":$("#designation").val(),"salary":$("#salary").val()};
+           var cdata=JSON.stringify(data);
+           $.post("addemployee.php",{data:cdata},function(r,s)
+           {
+               
+                   $("#message").html(r);
+             
+           });
+       });
+   });
+</script>
+<style>
+.card {background-color: powderblue;
+height: 100vh;}
+    
+    </style>
+<div class="card" style="padding:10%">
+    <h1 style="text-align: center;">Employee Details</h1>
+<form class="w-75" style="margin:auto;">
+ <div class="form-group">
+   <input type="number" class="form-control" id="empid"  placeholder="Enter Employee Id">
+ </div>
+  <div class="form-group">
+   <input type="text" class="form-control" id="name"  placeholder="Enter Employee Name">
+ </div>
+  <div class="form-group">
+   <input type="text" class="form-control" id="designation"  placeholder="Enter  Designation Of employee">
+ </div>
+ <div class="form-group">
+   <label for="salary"></label>
+   <input type="text" class="form-control" id="salary"  placeholder="Enter  Salary Of employee">
+ </div>
+ <input type="button" class="btn btn-primary " style="margin:auto" value="Save" id="save">
+</form>
+<div id="message"></div>
+</div>
+<!-- Divya -->

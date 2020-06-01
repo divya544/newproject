@@ -1,0 +1,25 @@
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script>
+  $(document).click(function(){
+      $('#save').click(function(){
+          var $bno=$('$booknumber').val();
+          var $btitle=$('$booktitle').val();
+          var $auther=$('$bookauthor').val();
+          var $price=$('$bookprice').val();
+          $.post("savebook.php",{booknumber:booknumber,booktitle:booktitle,bookauthor:bookauthor},function(r,s){
+                if(r=="done"){
+                $('#message').html('record save');
+                }
+                else{
+                    $('#message').html('record is not save'+r);
+                }
+            });
+      })
+  })
+</script>
+BookNumber : <input type="number" id="booknumber"> <br>
+BookTitle: <input type="text" id="booktitle"><br>
+BookAuthor : <input type="text" id="bookauthor"><br>
+BookPrice : <input type="number" id="bookprice"><br>
+<input type="submit" id="save" value="save"><br>
+<div id= "message"></div>
